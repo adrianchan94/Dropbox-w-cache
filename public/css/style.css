@@ -1,0 +1,28 @@
+* {
+    font-family: 'Roboto Slab', serif;
+}
+
+.navBarHeader {
+    font-size: 1.5rem;
+    margin-left: 0.3rem;
+}
+
+.jumbotron {
+    border-bottom: 2px solid black;
+}
+
+body {
+    font-family: 'Oswald', sans-serif;
+    background-color: transparent; 
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(rgba(43, 40, 94, 0.92), rgba(30, 14, 46, 0.76)), url(https://img.wallpapersafari.com/desktop/1536/864/72/4/5SpNrR.jpg);
+    margin: 0;
+    padding: 0;
+}
+
+.uploadFile {
+    width: 38rem;
+}

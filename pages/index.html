@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Adrian's Dropbox</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body onload='myFunction()'>
+
+    <nav class="navbar navbar-light bg-dark">
+        <a class="navbar-brand text-white" href="#">
+          <img src="https://img.icons8.com/doodle/96/000000/dropbox--v1.png" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy"/>
+          <span class="navBarHeader">Adrian's Dropbox</span>
+        </a>
+      </nav>
+    <div class="jumbotron">
+        <h1 class="display-4"><strong>Welcome to Adrian's Dropbox!</strong></h1>
+        <p class="lead"><strong>Click below to submit a file.</strong></p>
+        <hr class="my-4">
+        <form action='/files' method='post' enctype="multipart/form-data">
+            <label class="form-check-label">Upload your file here:</label><br><br>
+            <input class="btn btn-secondary uploadFile" type='file' name='upload' id='myFile' multiple size='50' onchange="myFunction()">
+            <input class="btn btn-info" type='submit' value='submit'>
+        </form>
+        <br>
+        <p><strong>Tip:</strong> Please select one file at a time. </p>
+        <hr class="my-4">
+        <p id='fileInformation'>
+        </p>
+
+        <p id='files'></p>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
+    <!--This is just fancy script so that the file information is placed on the html page when you select the files.-->
+    <script>
+        function myFunction() {
+            let x = document.getElementById('myFile');
+            let txt = '';
+
+            if ('files' in x) {
+                if (x.files.length == 0) {
+                    txt = 'Select one or more files.';
+                } else {
+                    for (var i = 0; i < x.files.length; i++) {
+                        txt += "<br><strong>" + (i + 1) + ". file</strong><br>";
+                        var file = x.files[i];
+                        if ('name' in file) {
+                            txt += 'name: ' + file.name + '<br>';
+                        }
+                        if ('size' in file) {
+                            txt += 'size: ' + file.size + ' bytes <br>';
+                        }
+                    }
+                }
+            } else {
+                if (x.value == '') {
+                    txt += 'Select one or more files.';
+                } else {
+                    txt += "The files property is not supported by your browser!";
+                    txt += "<br>The path of the selected file: " + x.value;
+                }
+            }
+            document.getElementById('fileInformation').innerHTML = txt;
+        }
+
+    </script>
+    <script type='text/javascript'>
+
+    </script>
+
+
+
+</body>
+
+</html>
